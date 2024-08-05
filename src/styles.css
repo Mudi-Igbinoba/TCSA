@@ -1,1 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "BentonSans";
+    src: url("assets/fonts/BentonSans-Thin.woff2") format("woff2"),
+      url("assets/fonts/BentonSans-Thin.woff") format("woff");
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "BentonSans";
+    src: url("assets/fonts/BentonSans-Regular.woff2") format("woff2"),
+      url("assets/fonts/BentonSans-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "BentonSans";
+    src: url("assets/fonts/BentonSans-Medium.woff2") format("woff2"),
+      url("assets/fonts/BentonSans-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "BentonSans";
+    src: url("assets/fonts/BentonSans-Light.woff2") format("woff2"),
+      url("assets/fonts/BentonSans-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "BentonSans", sans-serif;
+}

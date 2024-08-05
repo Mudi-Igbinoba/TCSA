@@ -1,0 +1,44 @@
+<div
+  id="dateModal"
+  class="space-y-6 bg-white rounded-lg px-8 py-7 shadow-[0_8px_56px_18px] shadow-black/[0.08]"
+>
+  <div class="flex justify-between items-center">
+    <h3 class="font-medium text-lg text-black">Select terminal date</h3>
+    <button (click)="closeModal()">
+      <ng-icon name="bootstrapX" class="text-black text-4xl"> </ng-icon>
+    </button>
+  </div>
+
+  <div class="flex justify-between items-start">
+    <div class="w-[45%]">
+      <h4 class="font-medium text-black">START DATE</h4>
+      <div class="">
+        <mat-card ngSkipHydration>
+          <mat-calendar [(selected)]="startDate"></mat-calendar>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="w-[45%]">
+      <h4 class="font-medium text-black">END DATE</h4>
+      <div class="">
+        <mat-card ngSkipHydration>
+          <mat-calendar [(selected)]="endDate"></mat-calendar>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex gap-x-3 justify-center items-center font-medium text-xs">
+    <button class="bg-primary-500 py-3 px-10 text-white rounded uppercase">
+      Submit
+    </button>
+
+    <button
+      class="rounded py-3 px-10 bg-neutral-350 text-primary-500 uppercase"
+      (click)="closeModal()"
+    >
+      Cancel
+    </button>
+  </div>
+</div>

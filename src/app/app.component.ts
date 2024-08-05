@@ -5,9 +5,11 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  template: `
+    <div>
+      <router-outlet />
+    </div>
+  `,
+  styleUrl: './app.component.css',
 })
-export class AppComponent {
-  title = 'TCSA';
-}
+export class AppComponent {}

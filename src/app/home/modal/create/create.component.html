@@ -1,0 +1,51 @@
+<div
+  id="createModal"
+  class="bg-white rounded-[20px] pt-[50px] pb-8 px-8 shadow-[0_8px_56px_18px] shadow-black/[0.08]"
+>
+  <h3 class="font-medium mb-2 text-base text-neutral-650">Create TCSA</h3>
+
+  <p class="text-black leading-5 mb-10">
+    Please provide accurate information in the fields below:
+  </p>
+
+  <form [formGroup]="tcsaForm" (ngSubmit)="handleSubmit()">
+    <div class="gap-y-4 grid grid-cols-1 mb-10">
+      <input
+        type="text"
+        class="w-full p-4 rounded bg-neutral-150 outline-none placeholder:text-primary-100"
+        placeholder="Enter Collection Name"
+        formControlName="collectionName"
+      />
+
+      <input
+        type="date"
+        class="w-full p-4 rounded bg-neutral-150 outline-none placeholder:text-primary-100"
+        placeholder="Terminal Date (DD/MM/YYYY)"
+        formControlName="terminalDate"
+      />
+    </div>
+
+    <div class="flex gap-x-4 items-center font-medium text-xs">
+      <button
+        class="bg-primary-500 py-4 text-xs px-10 text-white rounded uppercase disabled:cursor-not-allowed"
+        type="submit"
+        [disabled]="!tcsaForm.valid"
+      >
+        Proceed
+      </button>
+
+      <button
+        class="rounded py-4 px-10 bg-white text-primary-100 border border-primary-100 uppercase text-xs"
+        (click)="closeModal()"
+        type="button"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+
+  <span
+    >{{ tcsaForm.value.collectionName }},
+    {{ tcsaForm.value.terminalDate }}</span
+  >
+</div>

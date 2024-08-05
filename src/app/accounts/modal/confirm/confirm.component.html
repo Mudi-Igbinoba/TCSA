@@ -1,0 +1,34 @@
+<div
+  id="confirmModal"
+  class="text-center bg-white rounded-[20px] p-11 shadow-[0_8px_56px_18px] shadow-black/[0.08]"
+>
+  <div
+    class="rounded-full mb-8 flex justify-center items-center text-4xl w-[72px] h-[72px] mx-auto bg-error-500/[0.08] text-error-500"
+  >
+    <ng-icon name="bootstrapExclamationTriangle"></ng-icon>
+  </div>
+
+  <h3 class="font-medium mb-4 text-neutral-650">Close TCSA</h3>
+
+  <p class="text-primary-100 leading-5 mb-8">
+    Are you sure you want to close your TCSA?
+    <br />
+    Please note that this action cannot be reversed
+  </p>
+
+  <div class="flex gap-x-3 justify-center items-center font-medium text-xs">
+    <button
+      class="bg-primary-500 py-3 px-10 text-white rounded uppercase"
+      (click)="openModal()"
+    >
+      Close
+    </button>
+
+    <button
+      class="rounded py-3 px-10 bg-neutral-350 text-primary-500 uppercase"
+      (click)="closeModal()"
+    >
+      Cancel
+    </button>
+  </div>
+</div>

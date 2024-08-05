@@ -1,0 +1,53 @@
+<app-header></app-header>
+<main class="pt-7 pb-16 px-[70px]">
+  <div class="mb-7 flex justify-between items-center font-medium text-base">
+    <a routerLink="/" class="flex items-center gap-x-3 text-primary-900">
+      <ng-icon name="bootstrapChevronLeft"></ng-icon>
+      <span>Go Back</span>
+    </a>
+
+    <div class="flex gap-x-6 items-center">
+      <button
+        class="flex items-center rounded bg-primary-500 text-white uppercase text-xs font-medium px-4 py-3 gap-x-1.5"
+        (click)="openDateModal()"
+      >
+        <ng-icon class="text-base" name="matCalendarTodayOutline"></ng-icon>
+        Extend terminal date
+      </button>
+      <button
+        class="flex items-center rounded bg-white text-primary-500 border border-primary-500 uppercase text-xs font-medium px-4 py-3 gap-x-1.5"
+      >
+        <img [ngSrc]="stickyIcon" alt="icon" width="16" height="16" />
+        Generate statement
+      </button>
+      <button
+        class="flex items-center rounded bg-error-500 text-white border border-error-500 uppercase text-xs font-medium px-4 py-3 gap-x-1.5"
+        (click)="openConfirmModal()"
+      >
+        <ng-icon class="text-base" name="faCircleXmark"></ng-icon>
+        Close TCSA
+      </button>
+    </div>
+  </div>
+  <app-account-table
+    [data]="data"
+    [accountName]="accountName"
+    [transactions]="transactions"
+    [collectionName]="collectionName"
+    [accountID]="accountID"
+    [page]="page"
+    [pageData]="pageData"
+    [entries]="entries"
+    [totalPages]="totalPages"
+    (changePageEvent)="changePage($event)"
+    (loadTCSAByIDEvent)="loadTCSAByID($event)"
+    (loadTransactionsByIDEvent)="loadTransactionsByID($event.id, $event.page)"
+  ></app-account-table>
+</main>
+<app-modal
+  [isBackdropOpen]="modal.isBackdropOpen"
+  [isDateModalOpen]="modal.isDateModalOpen"
+  [isConfirmModalOpen]="modal.isConfirmModalOpen"
+  (closeBackdrop)="closeModal()"
+  [terminalDate]="terminalDate"
+></app-modal>

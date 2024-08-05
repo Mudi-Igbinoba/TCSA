@@ -1,0 +1,9 @@
+<div
+  [ngClass]="{
+    'fixed p-10 overflow-none inset-0 backdrop-blur-[6.5px] bg-black/40 flex justify-center items-center': true,
+    hidden: !isBackdropOpen
+  }"
+>
+  <app-create [isCreateModalOpen]="isCreateModalOpen" (close)="closeModal()">
+  </app-create>
+</div>

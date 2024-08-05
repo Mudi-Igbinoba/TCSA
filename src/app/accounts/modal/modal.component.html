@@ -1,0 +1,29 @@
+<div
+  [ngClass]="{
+    'fixed p-10 overflow-y-scroll inset-0 backdrop-blur-[6.5px] bg-black/40 flex justify-center items-center': true,
+    hidden: !isBackdropOpen
+  }"
+>
+  <app-date
+    [startDate]="startDate"
+    [endDate]="endDate"
+    [isDateModalOpen]="isDateModalOpen"
+    (close)="closeModal()"
+    [ngClass]="{ 'w-[50%]': true, hidden: !isDateModalOpen }"
+  ></app-date>
+
+  <app-confirm
+    [isConfirmModalOpen]="isConfirmModalOpen"
+    (open)="openModal()"
+    (close)="closeModal()"
+    [ngClass]="{ hidden: !isConfirmModalOpen }"
+  >
+  </app-confirm>
+  <app-close
+    [isCloseModalOpen]="isCloseModalOpen"
+    (close)="closeModal()"
+    [ngClass]="{ hidden: !isCloseModalOpen }"
+    [accountName]="accountName"
+    [collectionName]="collectionName"
+  ></app-close>
+</div>

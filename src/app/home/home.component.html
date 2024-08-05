@@ -1,0 +1,10 @@
+<app-header />
+<main class="pt-10 pb-16 px-[70px]">
+  <h2 class="text-base font-medium mb-10 text-neutral-1000">Customer TCSAs</h2>
+  <app-table />
+</main>
+<app-modal
+  [isBackdropOpen]="modal.isBackdropOpen"
+  [isCreateModalOpen]="modal.isCreateModalOpen"
+  (closeBackdrop)="closeModal()"
+></app-modal>

@@ -1,0 +1,120 @@
+<section class="bg-white pt-8 pb-10 rounded border border-neutral-200">
+  <table class="border-none table-auto w-full mb-[30px]">
+    <thead class="bg-primary-900/10 font-medium uppercase text-primary-100">
+      <tr>
+        @for (head of headings; track $index) {
+        <td class="px-14 py-3">{{ head }}</td>
+        }
+      </tr>
+    </thead>
+
+    @defer (on viewport) {
+    <tbody>
+      @for(account of data; track account.id; let last = $last){
+      <tr [ngClass]="{ 'border-b border-neutral-250': !last }">
+        <td class="ps-14 py-6">{{ account.accountName }}</td>
+        <td class="ps-14 py-6">{{ account.collectionName }}</td>
+        <td class="ps-14 py-6">
+          {{ account.terminalDate | date : "mediumDate" }}
+        </td>
+        <td class="ps-14 py-6">{{ account.accountNumber }}</td>
+        <td class="ps-14 py-6">
+          <a
+            [routerLink]="['/accounts', account.id]"
+            class="font-medium text-primary-500 hover:text-primary-500/50 underline uppercase"
+            >View</a
+          >
+        </td>
+      </tr>
+      }
+    </tbody>
+    }@placeholder(minimum 500ms) {
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td class="flex justify-center items-center py-20">
+          <svg
+            class="animate-spin -ml-1 mr-3 h-14 w-14 text-primary-500"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            ></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            ></path>
+          </svg>
+        </td>
+      </tr>
+    </tbody>
+    }
+  </table>
+
+  @defer () {
+  <div class="pr-14 flex justify-end items-center gap-x-6">
+    <p class="text-black">
+      Showing {{ data[0].id }} to {{ data[data.length - 1].id }} of
+      {{ entries }} entries
+    </p>
+    <div class="flex items-center gap-x-2 text-primary-100">
+      <button
+        (click)="prev()"
+        [ngClass]="{
+          'text-primary-500/40': !pageData.prev,
+          'text-primary-500': pageData.prev
+        }"
+      >
+        <ng-icon class="text-2xl mt-2" name="bootstrapArrowLeftShort"></ng-icon>
+      </button>
+
+      <button
+        [ngClass]="{
+          'font-medium text-base text-primary-500': !pageData.prev
+        }"
+        (click)="changePage(1)"
+      >
+        1
+      </button>
+      @for (link of [].constructor(totalPages - 1); track $index; let id =
+      $index ){
+      <button
+        [ngClass]="{
+          'font-medium text-base text-primary-500': pageData.prev === id + 1
+        }"
+        (click)="changePage(id + 2)"
+      >
+        {{ id + 2 }}
+      </button>
+
+      }
+
+      <button
+        (click)="next()"
+        [ngClass]="{
+          'text-primary-500/40': !pageData.next,
+          'text-primary-500': pageData.next
+        }"
+      >
+        <ng-icon
+          class="text-2xl mt-2"
+          name="bootstrapArrowRightShort"
+        ></ng-icon>
+      </button>
+    </div>
+  </div>
+  } @loading(minimum 500ms) {
+  <div
+    class="mr-14 h-2 ml-auto w-1/4 bg-neutral-100 animate-pulse rounded"
+  ></div>
+  }
+</section>
