@@ -35,9 +35,9 @@ export class DateComponent {
   @Input() isDateModalOpen: boolean = false;
   @Output() close = new EventEmitter<void>();
 
-  ngOnInit() {
-    console.log(this.startDate);
-  }
+  // ngOnInit() {
+  //   console.log(this.startDate);
+  // }
   closeModal() {
     this.close.emit();
   }

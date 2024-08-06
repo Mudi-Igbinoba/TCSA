@@ -5,6 +5,7 @@ import { CloseComponent } from './close/close.component';
 import { NgClass } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { ConfigService } from '../../config.service';
+import moment from 'moment';
 
 @Component({
   selector: 'app-modal',
@@ -18,7 +19,7 @@ export class ModalComponent {
   isCloseModalOpen = false;
   accountID: number | string = '';
   @Input() terminalDate = '';
-  startDate: Date | string = new Date(this.terminalDate);
+  startDate: Date | string = '';
   configService = inject(ConfigService);
   @Input() isBackdropOpen: boolean = false;
   @Input() isDateModalOpen: boolean = false;
@@ -41,14 +42,13 @@ export class ModalComponent {
   constructor(private route: ActivatedRoute) {}
   ngOnInit(): void {
     this.accountID = Number(this.route.snapshot.paramMap.get('id'));
-    console.log(this.accountID);
-    this.startDate = this.terminalDate;
+
+    this.startDate = moment(this.terminalDate).format('DD-MM-YYYY');
     console.log(this.startDate);
   }
 
   private deleteTCSA(id: number | string): void {
     this.configService.deleteTCSA(id).subscribe((response) => {
-      console.log(response);
       this.accountName = response.accountName;
       this.collectionName = response.collectionName;
     });

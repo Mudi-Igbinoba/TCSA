@@ -2,25 +2,40 @@
   <table class="border-none table-auto w-full mb-[30px]">
     <thead class="bg-primary-900/10 font-medium uppercase text-primary-100">
       <tr>
-        @for (head of headings; track $index) {
-        <td class="px-14 py-3">{{ head }}</td>
+        @for (head of headings; track $index) { @if (head === 'Account Name' ||
+        head === 'Narration') {
+        <td class="xl:ps-14 lg:ps-10 md:ps-5 ps-3 py-3 lg:block hidden">
+          {{ head }}
+        </td>
 
-        }
+        } @else {
+        <td class="xl:ps-14 lg:ps-10 md:ps-5 px-3 py-3">{{ head }}</td>
+
+        } }
       </tr>
     </thead>
 
     @defer (on viewport) {
     <tbody>
-      @for(account of transactions; track account.id; let last = $last){
+      @if(transactions.length > 0) { @for(account of transactions; track
+      account.id; let last = $last){
       <tr [ngClass]="{ 'border-b border-neutral-250': !last }">
-        <td class="ps-14 py-6">{{ accountName }}</td>
-        <td class="ps-14 py-6">{{ collectionName }}</td>
-        <td class="ps-14 py-6">{{ account.senderName }}</td>
-        <td class="ps-14 py-6">{{ account.narration }}</td>
-        <td class="ps-14 py-6">
+        <td class="xl:ps-14 lg:ps-10 md:ps-5 ps-3 py-6 lg:block hidden">
+          {{ accountName }}
+        </td>
+        <td class="xl:ps-14 lg:ps-10 md:ps-5 ps-3 py-6">
+          {{ collectionName }}
+        </td>
+        <td class="xl:ps-14 lg:ps-10 md:ps-5 ps-3 py-6">
+          {{ account.senderName }}
+        </td>
+        <td class="xl:ps-14 lg:ps-10 md:ps-5 ps-3 py-6 lg:block hidden">
+          {{ account.narration }}
+        </td>
+        <td class="xl:ps-14 lg:ps-10 md:ps-5 ps-3 py-6">
           {{ account.transactionDate | date : "mediumDate" }}
         </td>
-        <td class="ps-14 py-6">
+        <td class="xl:ps-14 lg:ps-10 md:ps-5 px-3 py-6">
           <span
             [ngClass]="{
               'text-success-500': account.status === 'Deposit',
@@ -30,27 +45,27 @@
           >
         </td>
       </tr>
-      }
+      } } @else { }
     </tbody>
     }@placeholder(minimum 750ms) {
     <tbody>
       <tr>
-        <td class="ps-14 py-6">
+        <td class="xl:ps-14 lg:ps-10 md:ps-5 ps-3 py-6 lg:block hidden">
           <div class="h-2 bg-neutral-200 animate-pulse rounded"></div>
         </td>
-        <td class="ps-14 py-6">
+        <td class="xl:ps-14 lg:ps-10 md:ps-5 ps-3 py-6">
           <div class="h-2 bg-neutral-200 animate-pulse rounded"></div>
         </td>
-        <td class="ps-14 py-6">
+        <td class="xl:ps-14 lg:ps-10 md:ps-5 ps-3 py-6">
           <div class="h-2 bg-neutral-200 animate-pulse rounded"></div>
         </td>
-        <td class="ps-14 py-6">
+        <td class="xl:ps-14 lg:ps-10 md:ps-5 ps-3 py-6 lg:block hidden">
           <div class="h-2 bg-neutral-200 animate-pulse rounded"></div>
         </td>
-        <td class="ps-14 py-6">
+        <td class="xl:ps-14 lg:ps-10 md:ps-5 ps-3 py-6">
           <div class="h-2 bg-neutral-200 animate-pulse rounded"></div>
         </td>
-        <td class="px-14 py-6">
+        <td class="xl:ps-14 lg:ps-10 md:ps-5 ps-3 py-6">
           <div class="h-2 bg-neutral-200 animate-pulse rounded"></div>
         </td>
       </tr>
@@ -59,7 +74,9 @@
   </table>
 
   @defer () {
-  <div class="pr-14 flex justify-end items-center gap-x-6">
+  <div
+    class="lg:pr-14 md:pr-7 md:pl-0 pl-3 pr-3 flex sm:justify-end justify-center items-center gap-x-6"
+  >
     <p class="text-black">
       Showing {{ transactions[0].id }} to
       {{ transactions[transactions.length - 1].id }} of {{ entries }} entries

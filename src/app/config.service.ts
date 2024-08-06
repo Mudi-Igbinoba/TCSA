@@ -28,11 +28,8 @@ export class ConfigService {
     return this.http.delete<Tcsa>(this.url + `/tcsa/${id}`);
   }
 
-  postTCSA() {
-    return this.http.post(this.url + '/tcsa/', {
-      collectionName: 'My name is Mudi',
-      terminalDate: '9-25-2023',
-    });
+  postTCSA(data: any) {
+    return this.http.post(this.url + '/tcsa/', data);
   }
 
   // updateTCSA(id){

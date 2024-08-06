@@ -1,4 +1,0 @@
-{
-  "/api/tcsa/": "/",
-  "/api/tcsa/transactions/:id": "/transactions/:id"
-}

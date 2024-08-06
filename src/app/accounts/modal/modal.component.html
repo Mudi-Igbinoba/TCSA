@@ -9,7 +9,10 @@
     [endDate]="endDate"
     [isDateModalOpen]="isDateModalOpen"
     (close)="closeModal()"
-    [ngClass]="{ 'w-[50%]': true, hidden: !isDateModalOpen }"
+    [ngClass]="{
+      'xl:w-[50%] md:w-3/4 sm:w-[80%] w-full': true,
+      hidden: !isDateModalOpen
+    }"
   ></app-date>
 
   <app-confirm

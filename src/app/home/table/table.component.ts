@@ -1,4 +1,11 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  Output,
+} from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import {
@@ -39,6 +46,7 @@ export class TableComponent {
   ngOnInit(): void {
     this.loadTCSA();
   }
+  private cdr = inject(ChangeDetectorRef);
 
   prev() {
     if (this.pageData.prev) {
@@ -62,7 +70,6 @@ export class TableComponent {
   private loadTCSA(): void {
     this.configService.getAllTCSAs(this.page).subscribe((response) => {
       this.pageData = response;
-      console.log(this.pageData);
       this.data = this.pageData.data;
       this.entries = this.pageData.items;
       this.totalPages = this.pageData.pages;

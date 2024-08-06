@@ -76,6 +76,7 @@ export class AccountsComponent {
 
   ngOnInit(): void {
     this.accountID = Number(this.route.snapshot.paramMap.get('id'));
+    console.log(this.accountID);
   }
 
   changePage(page: number): void {
@@ -92,7 +93,6 @@ export class AccountsComponent {
       this.accountName = response.accountName;
       this.terminalDate = response.terminalDate;
       this.collectionName = response.collectionName;
-      console.log(response);
     });
   }
 
@@ -100,7 +100,6 @@ export class AccountsComponent {
     this.configService.getTransactionByID(id, page).subscribe((response) => {
       this.pageData = response;
       this.transactions = this.pageData.data;
-      console.log(response);
       this.entries = this.pageData.items;
       this.totalPages = this.pageData.pages;
     });
