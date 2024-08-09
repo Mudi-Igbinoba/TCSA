@@ -78,8 +78,11 @@
     class="lg:pr-14 md:pr-7 md:pl-0 pl-3 pr-3 flex sm:justify-end justify-center items-center gap-x-6"
   >
     <p class="text-black">
-      Showing {{ transactions[0].id }} to
-      {{ transactions[transactions.length - 1].id }} of {{ entries }} entries
+      Showing @if (!pageData.prev){ 1 to {{ transactions.length }} } @else {
+      {{ 10 + 1 }} to
+      {{ entries }}
+      } of
+      {{ entries }} entries
     </p>
     <div class="flex items-center gap-x-2 text-primary-100">
       <button

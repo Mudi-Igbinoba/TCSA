@@ -73,6 +73,7 @@ export class TableComponent {
       this.data = this.pageData.data;
       this.entries = this.pageData.items;
       this.totalPages = this.pageData.pages;
+      console.log(response);
     });
   }
 }

@@ -14,8 +14,8 @@ import { Tcsa } from '../../../tcsa.object';
 })
 export class CloseComponent {
   @Input() isCloseModalOpen: boolean = false;
-  @Input() accountName: string = '';
-  @Input() collectionName: string = '';
+  // @Input() accountName: string = '';
+  // @Input() collectionName: string = '';
   @Output() close = new EventEmitter<void>();
 
   closeModal() {
