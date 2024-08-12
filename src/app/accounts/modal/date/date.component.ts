@@ -30,14 +30,14 @@ import { NgIconComponent, provideIcons } from '@ng-icons/core';
   templateUrl: './date.component.html',
 })
 export class DateComponent {
-  @Input() startDate: Date | string = '';
+  @Input() startDate: Date | string = new Date();
   @Input() endDate: Date | null = null;
   @Input() isDateModalOpen: boolean = false;
   @Output() close = new EventEmitter<void>();
 
-  // ngOnInit() {
-  //   console.log(this.startDate);
-  // }
+  ngOnInit() {
+    console.log(this.startDate);
+  }
   closeModal() {
     this.close.emit();
   }

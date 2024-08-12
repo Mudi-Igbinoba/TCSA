@@ -19,7 +19,7 @@ export class ModalComponent {
   isCloseModalOpen = false;
   accountID: number | string = '';
   @Input() terminalDate = '';
-  startDate: Date | string = '';
+  startDate: Date | string = new Date();
   configService = inject(ConfigService);
   @Input() isBackdropOpen: boolean = false;
   @Input() isDateModalOpen: boolean = false;
@@ -42,9 +42,7 @@ export class ModalComponent {
   constructor(private route: ActivatedRoute) {}
   ngOnInit(): void {
     this.accountID = Number(this.route.snapshot.paramMap.get('id'));
-
-    this.startDate = moment(this.terminalDate).format('DD-MM-YYYY');
-    console.log(this.startDate);
+    this.startDate = moment(this.terminalDate).toDate();
   }
 
   private deleteTCSA(id: number | string): void {

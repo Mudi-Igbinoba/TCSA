@@ -4,9 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "concurrently \"npm run json-server\" \"ng serve\"",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
+    "build": "ng build --prod",
     "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "watch": "ng build --watch --configuration development",
     "serve:ssr:TCSA": "node dist/tcsa/server/server.mjs",
     "json-server": "json-server --watch db.json --port 3000"
   },

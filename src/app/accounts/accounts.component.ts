@@ -46,6 +46,7 @@ export class AccountsComponent {
   openDateModal() {
     this.modal.isBackdropOpen = true;
     this.modal.isDateModalOpen = true;
+    this.terminalDate = this.data.terminalDate;
   }
 
   openConfirmModal() {
@@ -59,7 +60,7 @@ export class AccountsComponent {
     this.modal.isConfirmModalOpen = false;
   }
 
-  data: Tcsa | {} = {};
+  data: Tcsa | any;
   accountName: any;
   transactions: Transaction[] = [];
   collectionName: any;
@@ -68,7 +69,7 @@ export class AccountsComponent {
   pageData: any = {};
   entries: any = 0;
   totalPages: any = 1;
-  terminalDate: string = '';
+  terminalDate: Date | any = '';
 
   private configService = inject(ConfigService);
 
@@ -76,7 +77,7 @@ export class AccountsComponent {
 
   ngOnInit(): void {
     this.accountID = Number(this.route.snapshot.paramMap.get('id'));
-    console.log(this.accountID);
+    this.loadTCSAByID(this.accountID);
   }
 
   changePage(page: number): void {
@@ -91,7 +92,7 @@ export class AccountsComponent {
     this.configService.getTCSAByID(id).subscribe((response) => {
       this.data = response;
       this.accountName = response.accountName;
-      this.terminalDate = response.terminalDate;
+      this.terminalDate = this.data.terminalDate;
       this.collectionName = response.collectionName;
     });
   }
