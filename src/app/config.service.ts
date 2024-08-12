@@ -7,7 +7,7 @@ import { Transaction } from './transaction.object';
   providedIn: 'root',
 })
 export class ConfigService {
-  url: string = 'http://localhost:3000';
+  url: string = '/api';
   constructor(private http: HttpClient) {}
 
   getAllTCSAs(page: number | string) {

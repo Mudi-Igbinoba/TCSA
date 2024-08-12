@@ -1,18 +1,11 @@
-const jsonServer = require("json-server");
-const server = jsonServer.create();
-const router = jsonServer.router("../../db.json"); // Path to your JSON file
-const middlewares = jsonServer.defaults();
-
-server.use(middlewares);
-server.use(router);
+const data = require("../../db.json"); // Adjust the path to your JSON file
 
 exports.handler = async (event, context) => {
-  return new Promise((resolve, reject) => {
-    server.listen(3000, () => {
-      resolve({
-        statusCode: 200,
-        body: "JSON Server is running",
-      });
-    });
-  });
+  return {
+    statusCode: 200,
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
 };
