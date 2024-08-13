@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Tcsa } from './tcsa.object';
 import { Transaction } from './transaction.object';
@@ -8,6 +8,7 @@ import { Transaction } from './transaction.object';
 })
 export class ConfigService {
   url: string = 'https://json-server-vercel-one-lemon.vercel.app';
+
   constructor(private http: HttpClient) {}
 
   getAllTCSAs() {
@@ -36,9 +37,21 @@ export class ConfigService {
     return this.http.delete<Tcsa>(this.url + `/tcsa/${id}`);
   }
 
-  postTCSA(data: any) {
-    return this.http.post(this.url + '/tcsa/', data);
-  }
+  // postTCSA(data: any) {
+  //   return this.http.post(this.url + '/tcsa', data, {
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   });
+  // }
+
+  // postTransactions(data: any) {
+  //   return this.http.post(this.url + '/transactions', data, {
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   });
+  // }
 
   // updateTCSA(id){
   //   return this.http.

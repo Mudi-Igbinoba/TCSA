@@ -1,66 +1,70 @@
-// import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
-// import {
-//   FormControl,
-//   FormGroup,
-//   FormsModule,
-//   ReactiveFormsModule,
-//   Validators,
-// } from '@angular/forms';
-// import { ConfigService } from '../../../config.service';
-// import moment from 'moment';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { ConfigService } from '../../../config.service';
+import moment from 'moment';
 
-// @Component({
-//   selector: 'app-create',
-//   standalone: true,
-//   imports: [ReactiveFormsModule],
-//   styleUrl: './create.component.css',
-//   templateUrl: './create.component.html',
-// })
-// export class CreateComponent {
-//   @Input() isCreateModalOpen: boolean = false;
-//   @Output() close = new EventEmitter<void>();
+@Component({
+  selector: 'app-create',
+  standalone: true,
+  imports: [ReactiveFormsModule],
+  styleUrl: './create.component.css',
+  templateUrl: './create.component.html',
+})
+export class CreateComponent {
+  @Input() isCreateModalOpen: boolean = false;
+  @Output() close = new EventEmitter<void>();
 
-//   closeModal() {
-//     this.close.emit();
-//   }
+  closeModal() {
+    this.close.emit();
+  }
 
-//   collectionName = '';
-//   pageData: any = {};
-//   entries: any = 0;
-//   data: any = {};
+  collectionName = '';
+  pageData: any = {};
+  entries: any = 0;
+  data: any = {};
 
-//   tcsaForm = new FormGroup({
-//     collectionName: new FormControl('', Validators.required),
-//     terminalDate: new FormControl('', Validators.required),
-//   });
+  tcsaForm = new FormGroup({
+    collectionName: new FormControl('', Validators.required),
+    terminalDate: new FormControl('', Validators.required),
+  });
 
-//   ngOnInit() {
-//     this.loadTCSA();
-//   }
+  ngOnInit() {
+    this.loadTCSA();
+  }
 
-//   configService = inject(ConfigService);
+  configService = inject(ConfigService);
 
-//   handleSubmit() {
-//     this.data = {
-//       id: this.entries + 1,
-//       accountName: 'African Artists’ Foundation',
-//       collectionName: this.tcsaForm.value.collectionName,
-//       terminalDate: moment(this.tcsaForm.value.terminalDate).format('M/D/YYYY'),
-//       accountNumber: '0123456789',
-//       transactions: [],
-//     };
-//     this.configService
-//       .postTCSA(this.data)
-//       .subscribe((response) => console.log(response));
+  handleSubmit() {
+    this.data = {
+      id: this.entries + 1,
+      accountName: 'African Artists’ Foundation',
+      collectionName: this.tcsaForm.value.collectionName,
+      terminalDate: moment(this.tcsaForm.value.terminalDate).format('M/D/YYYY'),
+      accountNumber: '0123456789',
+      transactions: [],
+    };
 
-//     this.configService.getAllTCSAs(1);
-//     this.closeModal();
-//   }
+    // this.configService
+    //   .postTCSA(this.data)
+    //   .subscribe((response) => console.log(response));
 
-//   private loadTCSA(): void {
-//     this.configService.getAllTCSAs(1).subscribe((response) => {
-//       this.pageData = response;
-//       this.entries = this.pageData.items;
-//     });
-//   }
-// }
+    this.configService.getAllTCSAs();
+    alert(
+      `New Collection:\n\t\tCollection Name: ${this.data.collectionName}\n\t\tTerminal Date: ${this.data.terminalDate}`
+    );
+    this.closeModal();
+  }
+
+  private loadTCSA(): void {
+    this.configService.getAllTCSAs().subscribe((response) => {
+      this.pageData = response;
+      this.entries = this.pageData.length;
+    });
+  }
+}

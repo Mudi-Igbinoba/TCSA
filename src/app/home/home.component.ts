@@ -11,8 +11,8 @@ import { ModalComponent } from './modal/modal.component';
 })
 export class HomeComponent {
   modal = {
-    isBackdropOpen: false,
-    isCreateModalOpen: false,
+    isBackdropOpen: true,
+    isCreateModalOpen: true,
   };
 
   closeModal() {

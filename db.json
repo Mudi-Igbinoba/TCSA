@@ -4,76 +4,76 @@
       "id": 1,
       "accountName": "African Artists’ Foundation",
       "collectionName": "Design for schools",
-      "terminalDate": "9/21/2024",
+      "terminalDate": "9-21-2024",
       "accountNumber": "4233016108",
       "transactions": [
         {
           "id": 1,
           "senderName": "Karin Ockland",
-          "transactionDate": "5/22/2024",
+          "transactionDate": "5-22-2024",
           "status": "Withdrawal",
           "narration": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla."
         },
         {
           "id": 2,
           "senderName": "Gasper Westmoreland",
-          "transactionDate": "11/23/2024",
+          "transactionDate": "11-23-2024",
           "status": "Deposit",
           "narration": "Aenean auctor gravida sem."
         },
         {
           "id": 3,
           "senderName": "Joan McIlharga",
-          "transactionDate": "12/10/2024",
+          "transactionDate": "12-10-2024",
           "status": "Withdrawal",
           "narration": "Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam."
         },
         {
           "id": 4,
           "senderName": "Leia Dotterill",
-          "transactionDate": "7/2/2024",
+          "transactionDate": "7-2-2024",
           "status": "Withdrawal",
           "narration": "Aliquam sit amet diam in magna bibendum imperdiet."
         },
         {
           "id": 5,
           "senderName": "Stepha Axby",
-          "transactionDate": "6/16/2024",
+          "transactionDate": "6-16-2024",
           "status": "Withdrawal",
           "narration": "Integer non velit."
         },
         {
           "id": 6,
           "senderName": "Waly Gustus",
-          "transactionDate": "9/14/2024",
+          "transactionDate": "9-14-2024",
           "status": "Deposit",
           "narration": "Suspendisse potenti."
         },
         {
           "id": 7,
           "senderName": "Clayton Haskey",
-          "transactionDate": "7/10/2023",
+          "transactionDate": "7-10-2023",
           "status": "Deposit",
           "narration": "Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue."
         },
         {
           "id": 8,
           "senderName": "Ulises Leek",
-          "transactionDate": "1/20/2023",
+          "transactionDate": "1-20-2023",
           "status": "Deposit",
           "narration": "Nulla facilisi."
         },
         {
           "id": 9,
           "senderName": "Cletis Castiglioni",
-          "transactionDate": "4/3/2024",
+          "transactionDate": "4-3-2024",
           "status": "Deposit",
           "narration": "Maecenas tincidunt lacus at velit."
         },
         {
           "id": 10,
           "senderName": "Baryram Braghini",
-          "transactionDate": "10/5/2024",
+          "transactionDate": "10-5-2024",
           "status": "Deposit",
           "narration": "Suspendisse ornare consequat lectus."
         }
@@ -716,76 +716,76 @@
       "id": "10",
       "accountName": "African Artists’ Foundation",
       "collectionName": "Oil States International, Inc.",
-      "terminalDate": "10/3/2024",
+      "terminalDate": "10-3-2024",
       "accountNumber": "6148088331",
       "transactions": [
         {
           "id": 1,
           "senderName": "Alex Fydo",
-          "transactionDate": "12/25/2023",
+          "transactionDate": "12-25-2023",
           "status": "Withdrawal",
           "narration": "Morbi a ipsum."
         },
         {
           "id": 2,
           "senderName": "Dexter Janczewski",
-          "transactionDate": "5/15/2023",
+          "transactionDate": "5-15-2023",
           "status": "Withdrawal",
           "narration": "Vestibulum rutrum rutrum neque."
         },
         {
           "id": 3,
           "senderName": "Hussein Bootell",
-          "transactionDate": "2/19/2023",
+          "transactionDate": "2-19-2023",
           "status": "Deposit",
           "narration": "Nam dui."
         },
         {
           "id": 4,
           "senderName": "Almira Lenard",
-          "transactionDate": "9/23/2023",
+          "transactionDate": "9-23-2023",
           "status": "Withdrawal",
           "narration": "Nunc purus."
         },
         {
           "id": 5,
           "senderName": "Shandee McComas",
-          "transactionDate": "12/20/2024",
+          "transactionDate": "12-20-2024",
           "status": "Deposit",
           "narration": "Aenean lectus."
         },
         {
           "id": 6,
           "senderName": "Michaeline Tittletross",
-          "transactionDate": "8/29/2023",
+          "transactionDate": "8-29-2023",
           "status": "Deposit",
           "narration": "Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis."
         },
         {
           "id": 7,
           "senderName": "Marv Dulson",
-          "transactionDate": "5/15/2023",
+          "transactionDate": "5-15-2023",
           "status": "Deposit",
           "narration": "Aenean auctor gravida sem."
         },
         {
           "id": 8,
           "senderName": "Axel Burmingham",
-          "transactionDate": "12/23/2023",
+          "transactionDate": "12-23-2023",
           "status": "Deposit",
           "narration": "Donec vitae nisi."
         },
         {
           "id": 9,
           "senderName": "Timmy Bezzant",
-          "transactionDate": "3/31/2023",
+          "transactionDate": "3-31-2023",
           "status": "Withdrawal",
           "narration": "Nam tristique tortor eu pede."
         },
         {
           "id": 10,
           "senderName": "George Londors",
-          "transactionDate": "2/25/2023",
+          "transactionDate": "2-25-2023",
           "status": "Withdrawal",
           "narration": "Etiam justo."
         }
@@ -1506,76 +1506,76 @@
       "id": 20,
       "accountName": "Twitternation",
       "collectionName": "Nelnet, Inc.",
-      "terminalDate": "12/1/2023",
+      "terminalDate": "12-1-2023",
       "accountNumber": "0825746985",
       "transactions": [
         {
           "id": 1,
           "senderName": "Nate Thain",
-          "transactionDate": "11/6/2024",
+          "transactionDate": "11-6-2024",
           "status": "Withdrawal",
           "narration": "Morbi porttitor lorem id ligula."
         },
         {
           "id": 2,
           "senderName": "Lacie Benley",
-          "transactionDate": "12/25/2023",
+          "transactionDate": "12-25-2023",
           "status": "Deposit",
           "narration": "Phasellus sit amet erat."
         },
         {
           "id": 3,
           "senderName": "Sallyanne McRavey",
-          "transactionDate": "8/13/2024",
+          "transactionDate": "8-13-2024",
           "status": "Withdrawal",
           "narration": "Quisque porta volutpat erat."
         },
         {
           "id": 4,
           "senderName": "Collin Abramin",
-          "transactionDate": "8/17/2024",
+          "transactionDate": "8-17-2024",
           "status": "Withdrawal",
           "narration": "Donec dapibus."
         },
         {
           "id": 5,
           "senderName": "Serene Levett",
-          "transactionDate": "6/12/2024",
+          "transactionDate": "6-12-2024",
           "status": "Withdrawal",
           "narration": "Donec quis orci eget orci vehicula condimentum."
         },
         {
           "id": 6,
           "senderName": "Vickie Semmence",
-          "transactionDate": "3/6/2024",
+          "transactionDate": "3-6-2024",
           "status": "Deposit",
           "narration": "Nulla tellus."
         },
         {
           "id": 7,
           "senderName": "Catha Eric",
-          "transactionDate": "9/25/2023",
+          "transactionDate": "9-25-2023",
           "status": "Withdrawal",
           "narration": "Pellentesque eget nunc."
         },
         {
           "id": 8,
           "senderName": "Mireielle Tichelaar",
-          "transactionDate": "8/20/2024",
+          "transactionDate": "8-20-2024",
           "status": "Deposit",
           "narration": "Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante."
         },
         {
           "id": 9,
           "senderName": "Hy Wiggall",
-          "transactionDate": "12/30/2023",
+          "transactionDate": "12-30-2023",
           "status": "Deposit",
           "narration": "Pellentesque ultrices mattis odio."
         },
         {
           "id": 10,
           "senderName": "Antonetta Mutch",
-          "transactionDate": "11/11/2023",
+          "transactionDate": "11-11-2023",
           "status": "Deposit",
           "narration": "Aliquam quis turpis eget elit sodales scelerisque."
         }
