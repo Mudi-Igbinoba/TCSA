@@ -1,11 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  inject,
-  Input,
-  Output,
-} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import {
@@ -37,43 +30,53 @@ export class TableComponent {
 
   private configService = inject(ConfigService);
   page: number = 1;
-  pageData: any = {};
-  entries: any = 0;
-  totalPages: any = 1;
+  totalPages: number = 0;
 
-  data: Tcsa[] = [];
+  itemsPerPage: number = 10;
+  data: Tcsa[] | any = [];
+  entries: number = 0;
 
   ngOnInit(): void {
-    this.loadTCSA();
+    this.loadAllTCSA();
+    this.loadPaginatedTCSA();
   }
-  private cdr = inject(ChangeDetectorRef);
 
   prev() {
-    if (this.pageData.prev) {
-      this.changePage(this.pageData.prev);
+    if (this.page > 1) {
+      this.page--;
+      this.changePage(this.page);
     }
   }
 
   next() {
-    if (this.pageData.next) {
-      this.changePage(this.pageData.next);
+    if (this.page < this.totalPages) {
+      this.page++;
+      this.changePage(this.page);
     }
   }
 
   changePage(page: number): void {
-    if (this.page !== page) {
+    if (page >= 1 && page <= this.totalPages) {
       this.page = page;
-      this.loadTCSA();
     }
+    this.loadPaginatedTCSA();
   }
 
-  private loadTCSA(): void {
-    this.configService.getAllTCSAs(this.page).subscribe((response) => {
-      this.pageData = response;
-      this.data = this.pageData.data;
-      this.entries = this.pageData.items;
-      this.totalPages = this.pageData.pages;
-      console.log(response);
+  private loadPaginatedTCSA(): void {
+    this.configService.getPaginatedTCSAs(this.page).subscribe((response) => {
+      this.data = response;
+      this.itemsPerPage = this.data.length;
+    });
+  }
+
+  private loadAllTCSA(): void {
+    this.configService.getAllTCSAs().subscribe((response) => {
+      this.entries = response.length;
+      if (this.entries > 0 && this.itemsPerPage > 0) {
+        this.totalPages = Math.ceil(this.entries / this.itemsPerPage);
+      } else {
+        this.totalPages = 1; // Default to 1 page if calculation is invalid
+      }
     });
   }
 }

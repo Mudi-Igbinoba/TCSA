@@ -38,12 +38,15 @@
     [collectionName]="collectionName"
     [accountID]="accountID"
     [page]="page"
-    [pageData]="pageData"
+    [itemsPerPage]="itemsPerPage"
     [entries]="entries"
     [totalPages]="totalPages"
     (changePageEvent)="changePage($event)"
     (loadTCSAByIDEvent)="loadTCSAByID($event)"
-    (loadTransactionsByIDEvent)="loadTransactionsByID($event.id, $event.page)"
+    (loadTransactionsEvent)="loadTransactions($event)"
+    (loadPaginatedTransactionsEvent)="
+      loadPaginatedTransactions($event.id, $event.page)
+    "
   ></app-account-table>
 </main>
 <app-modal

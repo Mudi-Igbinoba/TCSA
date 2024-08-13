@@ -17,8 +17,7 @@
 
     @defer (on viewport) {
     <tbody>
-      @if(transactions.length > 0) { @for(account of transactions; track
-      account.id; let last = $last){
+      @for(account of transactions; track account.id; let last = $last){
       <tr [ngClass]="{ 'border-b border-neutral-250': !last }">
         <td class="xl:ps-14 lg:ps-10 md:ps-5 ps-3 py-6 lg:block hidden">
           {{ accountName }}
@@ -45,7 +44,7 @@
           >
         </td>
       </tr>
-      } } @else { }
+      }
     </tbody>
     }@placeholder(minimum 750ms) {
     <tbody>
@@ -78,8 +77,8 @@
     class="lg:pr-14 md:pr-7 md:pl-0 pl-3 pr-3 flex sm:justify-end justify-center items-center gap-x-6"
   >
     <p class="text-black">
-      Showing @if (!pageData.prev){ 1 to {{ transactions.length }} } @else {
-      {{ 5 + 1 }} to
+      Showing @if (page === 1){ 1 to {{ itemsPerPage }} } @else {
+      {{ itemsPerPage + 1 }} to
       {{ entries }}
       } of
       {{ entries }} entries
@@ -88,16 +87,17 @@
       <button
         (click)="prev()"
         [ngClass]="{
-          'text-primary-500/40': !pageData.prev,
-          'text-primary-500': pageData.prev
+          'text-primary-500/40': page === 1,
+          'text-primary-500': page > 1
         }"
+        [disabled]="page === 1"
       >
         <ng-icon class="text-2xl mt-2" name="bootstrapArrowLeftShort"></ng-icon>
       </button>
 
       <button
         [ngClass]="{
-          'font-medium text-base text-primary-500': !pageData.prev
+          'font-medium text-base text-primary-500': page === 1
         }"
         (click)="changePage(1)"
       >
@@ -107,7 +107,7 @@
       $index ){
       <button
         [ngClass]="{
-          'font-medium text-base text-primary-500': pageData.prev === id + 1
+          'font-medium text-base text-primary-500': page === id + 2
         }"
         (click)="changePage(id + 2)"
       >
@@ -119,9 +119,10 @@
       <button
         (click)="next()"
         [ngClass]="{
-          'text-primary-500/40': !pageData.next,
-          'text-primary-500': pageData.next
+          'text-primary-500/40': page === totalPages,
+          'text-primary-500': page < totalPages
         }"
+        [disabled]="page === totalPages"
       >
         <ng-icon
           class="text-2xl mt-2"

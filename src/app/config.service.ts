@@ -7,20 +7,28 @@ import { Transaction } from './transaction.object';
   providedIn: 'root',
 })
 export class ConfigService {
-  url: string = 'http://localhost:3000';
+  url: string = 'https://json-server-vercel-one-lemon.vercel.app';
   constructor(private http: HttpClient) {}
 
-  getAllTCSAs(page: number | string) {
-    return this.http.get<Tcsa>(this.url + `/tcsa/?_page=${page}&_per_page=10`);
+  getAllTCSAs() {
+    return this.http.get<[]>(this.url + '/tcsa');
+  }
+
+  getPaginatedTCSAs(page: number | string) {
+    return this.http.get<Tcsa>(this.url + `/tcsa?_page=${page}&_limit=10`);
   }
 
   getTCSAByID(id: number | string) {
     return this.http.get<Tcsa>(this.url + `/tcsa/${id}`);
   }
 
-  getTransactionByID(id: number | string, page: number | string) {
-    return this.http.get(
-      this.url + `/transactions?tcsaid=${id}&_page=${page}&_per_page=5`
+  getAllTransactions(id: number | string) {
+    return this.http.get<[]>(this.url + `/tcsa/${id}/transactions`);
+  }
+
+  getPaginatedTransactions(id: number | string, page: number | string) {
+    return this.http.get<[]>(
+      this.url + `/tcsa/${id}/transactions/?_page=${page}&_limit=5`
     );
   }
 

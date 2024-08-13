@@ -10,7 +10,6 @@ import { ModalComponent } from './modal/modal.component';
 import { HeaderComponent } from '../header/header.component';
 import { ConfigService } from '../config.service';
 import { Transaction } from '../transaction.object';
-import { Tcsa } from '../tcsa.object';
 
 @Component({
   selector: 'app-accounts',
@@ -60,15 +59,15 @@ export class AccountsComponent {
     this.modal.isConfirmModalOpen = false;
   }
 
-  data: Tcsa | any;
+  data: Transaction[] | any;
   accountName: any;
   transactions: Transaction[] = [];
   collectionName: any;
   accountID: number = 0;
   page: number = 1;
-  pageData: any = {};
-  entries: any = 0;
-  totalPages: any = 1;
+  totalPages: number = 0;
+  itemsPerPage: number = 10;
+  entries: number = 0;
   terminalDate: Date | any = '';
 
   private configService = inject(ConfigService);
@@ -78,31 +77,43 @@ export class AccountsComponent {
   ngOnInit(): void {
     this.accountID = Number(this.route.snapshot.paramMap.get('id'));
     this.loadTCSAByID(this.accountID);
+    this.loadTransactions(this.accountID);
+    this.loadPaginatedTransactions(this.accountID, this.page);
   }
 
   changePage(page: number): void {
-    if (this.page !== page) {
+    if (page >= 1 && page <= this.totalPages) {
       this.page = page;
-      this.loadTCSAByID(this.accountID);
-      this.loadTransactionsByID(this.accountID, this.page);
+      this.loadPaginatedTransactions(this.accountID, this.page);
     }
   }
 
   loadTCSAByID(id: number): void {
     this.configService.getTCSAByID(id).subscribe((response) => {
-      this.data = response;
       this.accountName = response.accountName;
-      this.terminalDate = this.data.terminalDate;
+      this.terminalDate = response.terminalDate;
       this.collectionName = response.collectionName;
     });
   }
 
-  loadTransactionsByID(id: number, page: number) {
-    this.configService.getTransactionByID(id, page).subscribe((response) => {
-      this.pageData = response;
-      this.transactions = this.pageData.data;
-      this.entries = this.pageData.items;
-      this.totalPages = this.pageData.pages;
+  loadTransactions(id: number) {
+    this.configService.getAllTransactions(id).subscribe((response) => {
+      this.data = response;
+      this.entries = response.length;
+      if (this.entries > 0 && this.itemsPerPage > 0) {
+        this.totalPages = Math.ceil(this.entries / this.itemsPerPage);
+      } else {
+        this.totalPages = 1; // Default to 1 page if calculation is invalid
+      }
     });
+  }
+
+  loadPaginatedTransactions(id: number, page: number) {
+    this.configService
+      .getPaginatedTransactions(id, page)
+      .subscribe((response) => {
+        this.transactions = response;
+        this.itemsPerPage = response.length;
+      });
   }
 }

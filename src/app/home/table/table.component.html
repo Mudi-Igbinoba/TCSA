@@ -75,8 +75,8 @@
     class="lg:pr-14 md:pr-7 md:pl-0 pl-3 pr-3 flex sm:justify-end justify-center items-center gap-x-6"
   >
     <p class="text-black">
-      Showing @if (!pageData.prev){ 1 to {{ data.length }} } @else {
-      {{ 10 + 1 }} to
+      Showing @if (page === 1){ 1 to {{ itemsPerPage }} } @else {
+      {{ itemsPerPage + 1 }} to
       {{ entries }}
       } of
       {{ entries }} entries
@@ -85,30 +85,24 @@
       <button
         (click)="prev()"
         [ngClass]="{
-          'text-primary-500/40': !pageData.prev,
-          'text-primary-500': pageData.prev
+          'text-primary-500/40': page === 1,
+          'text-primary-500': page > 1
         }"
+        [disabled]="page === 1"
       >
         <ng-icon class="text-2xl mt-2" name="bootstrapArrowLeftShort"></ng-icon>
       </button>
 
+      @for (link of [].constructor(totalPages); track $index; let id = $index ){
+      <!-- Example of looping through pages -->
+
       <button
         [ngClass]="{
-          'font-medium text-base text-primary-500': !pageData.prev
+          'font-medium text-base text-primary-500': page === id + 1
         }"
-        (click)="changePage(1)"
+        (click)="changePage(id + 1)"
       >
-        1
-      </button>
-      @for (link of [].constructor(totalPages - 1); track $index; let id =
-      $index ){
-      <button
-        [ngClass]="{
-          'font-medium text-base text-primary-500': pageData.prev === id + 1
-        }"
-        (click)="changePage(id + 2)"
-      >
-        {{ id + 2 }}
+        {{ id + 1 }}
       </button>
 
       }
@@ -116,9 +110,10 @@
       <button
         (click)="next()"
         [ngClass]="{
-          'text-primary-500/40': !pageData.next,
-          'text-primary-500': pageData.next
+          'text-primary-500/40': page === totalPages,
+          'text-primary-500': page < totalPages
         }"
+        [disabled]="page === totalPages"
       >
         <ng-icon
           class="text-2xl mt-2"
@@ -127,7 +122,7 @@
       </button>
     </div>
   </div>
-  } @loading(minimum 750ms) {
+  } @loading(minimum 900ms) {
   <div
     class="mr-14 h-2 ml-auto w-1/4 bg-neutral-100 animate-pulse rounded"
   ></div>

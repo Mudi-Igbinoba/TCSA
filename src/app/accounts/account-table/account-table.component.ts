@@ -6,7 +6,6 @@ import {
   bootstrapArrowRightShort,
 } from '@ng-icons/bootstrap-icons';
 import { DatePipe, NgClass } from '@angular/common';
-import { Tcsa } from '../../tcsa.object';
 import { Transaction } from '../../transaction.object';
 
 @Component({
@@ -29,18 +28,20 @@ export class AccountTableComponent {
     'Status',
   ];
 
-  @Input() data: Tcsa | {} = {};
+  @Input() data: Transaction[] | any;
   @Input() accountName: any;
   @Input() transactions: Transaction[] = [];
   @Input() collectionName: any;
   @Input() accountID: number = 0;
   @Input() page: number = 1;
-  @Input() pageData: any = {};
-  @Input() entries: any = 0;
-  @Input() totalPages: any = 1;
+  @Input() itemsPerPage: number = 0;
+  @Input() entries: number = 0;
+  @Input() totalPages: number = 0;
   @Output() changePageEvent = new EventEmitter<number>();
   @Output() loadTCSAByIDEvent = new EventEmitter<number>();
-  @Output() loadTransactionsByIDEvent = new EventEmitter<{
+  @Output() loadTransactionsEvent = new EventEmitter<number>();
+
+  @Output() loadPaginatedTransactionsEvent = new EventEmitter<{
     id: number;
     page: number;
   }>();
@@ -53,26 +54,33 @@ export class AccountTableComponent {
     this.loadTCSAByIDEvent.emit(id);
   }
 
-  loadTransactionsByID(id: number, page: number) {
-    this.loadTransactionsByIDEvent.emit({ id, page });
+  loadTransactions(id: number) {
+    this.loadTransactionsEvent.emit(id);
+  }
+
+  loadPaginatedTransactions(id: number, page: number) {
+    this.loadPaginatedTransactionsEvent.emit({ id, page });
   }
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.loadTCSAByID(this.accountID);
-    this.loadTransactionsByID(this.accountID, this.page);
+    this.loadTransactions(this.accountID);
+    this.loadPaginatedTransactions(this.accountID, this.page);
   }
 
   prev() {
-    if (this.pageData.prev) {
-      this.changePage(this.pageData.prev);
+    if (this.page > 1) {
+      this.page--;
+      this.changePage(this.page);
     }
   }
 
   next() {
-    if (this.pageData.next) {
-      this.changePage(this.pageData.next);
+    if (this.page < this.totalPages) {
+      this.page++;
+      this.changePage(this.page);
     }
   }
 }
